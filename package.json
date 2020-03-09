@@ -1,0 +1,32 @@
+{
+  "name": "mern-auth-server",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "author": "Titux Metal <github@lgdweb.fr>",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel ./src/index.js --out-dir dist",
+    "docker:mongo": "docker run -d --user $(id -u):$(id -g) --rm --name mongoDev -p 27017:27017 -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro -v ~/mongoData/data:/data/db mongo:4.2.3",
+    "docker:mongoClean": "docker rm -f mongoDev",
+    "watch": "env-cmd babel-watch src/index.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.6",
+    "@babel/node": "^7.8.4",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.6",
+    "babel-watch": "^7.0.0",
+    "env-cmd": "^10.1.0",
+    "eslint-config-standard-airbnb-bundle": "^1.0.5"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.3",
+    "morgan": "^1.9.1"
+  },
+  "eslintConfig": {
+    "extends": "standard-airbnb-bundle"
+  }
+}
